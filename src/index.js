@@ -1,18 +1,9 @@
 import './styles.css';
-import data from "./data/menu.json"
-import cards from "./templates/cards.hbs"
+import data from "./data/menu.json";
+import cards from "./templates/cards.hbs";
+import { refs } from "./data/refs";
+import { theme } from "./data/theme";
 
-
-const Theme = {
-    LIGHT: 'light-theme',
-    DARK: 'dark-theme',
-};
-
-const refs = {
-    checkboxRef: document.getElementById("theme-switch-toggle"),
-    bodyRef: document.querySelector("body"),
-    ulRef: document.querySelector(".js-menu"),
-}
 
 const onDarkTheme = () => {
     refs.bodyRef.classList.contains("light-theme") && refs.bodyRef.classList.remove("light-theme");
@@ -29,14 +20,14 @@ const onLightTheme = () => {
 }
 
 // приводим из string в boolean из localStorage
-if (localStorage.getItem("Theme")) {
-    const checkedBoolean = JSON.parse(localStorage.getItem("Theme"));
+if (localStorage.getItem("theme")) {
+    const checkedBoolean = JSON.parse(localStorage.getItem("theme"));
     refs.checkboxRef.checked = checkedBoolean;
     refs.checkboxRef.checked ? onDarkTheme() : onLightTheme();
 }
 const checkboxState = (e) => {
     // приводим в string из boolean для localStorage
-    localStorage.setItem("Theme", JSON.stringify(e.target.checked))
+    localStorage.setItem("theme", JSON.stringify(e.target.checked))
     e.target.checked ? onDarkTheme() : onLightTheme();
 }
 refs.checkboxRef.addEventListener("change", checkboxState);
