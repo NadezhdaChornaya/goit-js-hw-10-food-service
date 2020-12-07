@@ -1,7 +1,8 @@
 import './styles.css';
 import data from "./data/menu.json"
+import cards from "./templates/cards.hbs"
 
-console.log(data);
+
 
 const Theme = {
     LIGHT: 'light-theme',
@@ -40,5 +41,48 @@ checkboxRef.addEventListener("change", checkboxState);
 
 // ==========================================================
 
+const ulRef = document.querySelector(".js-menu");
 
+// const createMarkup = (dataArray) => {
+//     return dataArray.reduce((acc, { image, description, name, price, ingredients }) => {
+//         acc += `
+//         <li class="menu__item">
+//   <article class="card">
+//     <img
+//       src=${image}
+//       alt=${description}
+//       class="card__image"
+//     />
+//     <div class="card__content">
+//       <h2 class="card__name">${name}</h2>
+//       <p class="card__price">
+//         <i class="material-icons"> monetization_on </i>
+//         ${price} кредитов
+//       </p>
 
+//       <p class="card__descr">
+//         ${description}
+//       </p>
+
+//       <ul class="tag-list">
+//       ${ingredients.map(ingredient =>
+//             (`<li class="tag-list__item">${ingredient}</li>`)).join('')
+//             }
+//       </ul>
+//     </div>
+
+//     <button class="card__button button">
+//       <i class="material-icons button__icon"> shopping_cart </i>
+//       В корзину
+//     </button>
+//   </article>
+// </li>
+//     `
+
+//         return acc;
+//     }, "")
+// };
+
+// ulRef.innerHTML = `<ul>${createMarkup(data)}</ul>`
+
+ulRef.innerHTML = cards(data);
