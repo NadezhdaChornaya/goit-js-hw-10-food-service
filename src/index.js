@@ -1,6 +1,7 @@
 import './styles.css';
 import data from "./data/menu.json"
 import cards from "./templates/cards.hbs"
+// import 'material-desing-icons/iconfont/material-icons.css';
 
 
 
